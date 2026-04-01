@@ -1,6 +1,3 @@
-# ── global/rules/workflows.md ─────────────────────────────────────────────
-workflows = """# Prompt Patterns and Workflows
-
 ## Universal prompt shape (use for complex asks)
 
 ```
@@ -121,8 +118,3 @@ Examples:
 - `Fix this failing test with the smallest safe change.`
 - `Plan this feature before coding anything.`
 - `Is this auth implementation secure? List risks.`
-"""
-
-with open(f"{base}/global/rules/workflows.md", "w") as f:
-    f.write(workflows)
-print("global/rules/workflows.md ✓")

@@ -1,6 +1,3 @@
-# ── global/rules/ecc-reference.md ────────────────────────────────────────
-ecc_ref = """# ECC Reference — Everything Claude Code
-
 ## What ECC is
 
 Everything Claude Code is a Claude Code harness ecosystem organized around five pillars:
@@ -64,8 +61,3 @@ Project .claude/CLAUDE.md      → repo-specific context, stack, commands
 
 Use ECC to improve judgment and consistency — not to force every task through a ceremony.
 The best harness is the one that disappears while work gets done.
-"""
-
-with open(f"{base}/global/rules/ecc-reference.md", "w") as f:
-    f.write(ecc_ref)
-print("global/rules/ecc-reference.md ✓")

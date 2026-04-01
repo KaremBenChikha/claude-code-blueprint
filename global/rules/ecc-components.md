@@ -1,6 +1,3 @@
-# ── global/rules/ecc-components.md ───────────────────────────────────────
-ecc_comp = """# ECC Components — Agents, Hooks, and Skills
-
 ## Agents
 
 Use agents when specialization reduces mistakes and improves output quality.
@@ -88,8 +85,3 @@ Skills are on-demand knowledge packs. They load relevant context without polluti
 | Rules | Always-on behavior and standards |
 
 Start with what you actually need. Add more when you feel a real gap, not before.
-"""
-
-with open(f"{base}/global/rules/ecc-components.md", "w") as f:
-    f.write(ecc_comp)
-print("global/rules/ecc-components.md ✓")

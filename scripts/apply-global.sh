@@ -41,7 +41,7 @@ echo "${GREEN}✓${RESET} global/rules/ecc-components.md → ~/.claude/rules/ecc
 cp "$REPO_DIR/global/rules/workflows.md"       "$CLAUDE_DIR/rules/workflows.md"
 echo "${GREEN}✓${RESET} global/rules/workflows.md      → ~/.claude/rules/workflows.md"
 
-cp "$REPO_DIR/commands/translate.md"           "$CLAUDE_DIR/commands/translate.md"
+cp "$REPO_DIR/global/commands/translate.md"    "$CLAUDE_DIR/commands/translate.md"
 echo "${GREEN}✓${RESET} commands/translate.md          → ~/.claude/commands/translate.md"
 
 echo ""

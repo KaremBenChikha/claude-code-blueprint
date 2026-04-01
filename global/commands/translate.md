@@ -1,11 +1,3 @@
-# ── commands/translate.md ─────────────────────────────────────────────────
-translate_cmd = """# /translate — Natural Language to Claude Code Prompt
-
-Use this command when your ask is vague, complex, or hard to structure on your own.
-For simple, clear tasks, skip this and just write directly.
-
----
-
 ## What this does
 
 Takes any plain-English description and outputs a structured Claude Code prompt
@@ -117,8 +109,3 @@ Depth:       think
 
 Only use `/translate` when the task is genuinely vague or complex.
 For most daily tasks, write directly — your rules and agents handle the rest.
-"""
-
-with open(f"{base}/commands/translate.md", "w") as f:
-    f.write(translate_cmd)
-print("commands/translate.md ✓")
