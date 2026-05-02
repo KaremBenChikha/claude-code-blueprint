@@ -1,0 +1,50 @@
+{
+  "model": "sonnet",
+  "theme": "dark",
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "_comment": "Hook 1: Warn when console.log is found in TypeScript or JavaScript files after any edit or write. Prints a warning with matching line numbers. Catches debug statements before they accumulate.",
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"${CLAUDE_TOOL_INPUT_file_path:-${CLAUDE_TOOL_INPUT_path:-}}\"; if [[ \"$file\" =~ \\.(ts|tsx|js|jsx)$ ]]; then matches=$(grep -n 'console\\.log' \"$file\" 2>/dev/null | head -3); if [ -n \"$matches\" ]; then echo \"[WARN] console.log found in $file:\"; echo \"$matches\"; fi; fi"
+          }
+        ]
+      },
+      {
+        "_comment": "Hook 2: Remind to update INDEX.md when a new file is written. Only fires when SESSION.md exists (meaning this is a memory-enabled project) and the written file is not SESSION.md or INDEX.md itself.",
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=\"${CLAUDE_TOOL_INPUT_file_path:-}\"; sess=$(find . -name 'SESSION.md' -path '*/obsidian/*' 2>/dev/null | head -1); if [ -n \"$sess\" ] && [[ \"$file\" != *SESSION.md* ]] && [[ \"$file\" != *INDEX.md* ]]; then echo \"[MEMORY] New file written: $file — update obsidian/INDEX.md if this is a new module, route, or service\"; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "_comment": "Hook 3: Update the _Last updated: timestamp in SESSION.md every time Claude Code finishes a response or the session ends. Ensures the timestamp is accurate even if the session is interrupted. Uses BSD sed syntax (macOS). On Linux, change 'sed -i ''' to 'sed -i'.",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ts=$(date '+%Y-%m-%d %H:%M'); sess=$(find . -name 'SESSION.md' -path '*/obsidian/*' 2>/dev/null | head -1); if [ -n \"$sess\" ]; then sed -i '' \"s/^_Last updated:.*/_Last updated: $ts/\" \"$sess\" 2>/dev/null; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
